@@ -82,7 +82,7 @@ describe("addNumbers", () => {
     describe("Invalid inputs", () => {
       it("should throw error when passed number string with negative numbers", () => {
         expect(() => addNumbers("1,-2,-3")).toThrow(
-          "Negatives not allowed: -2, -3"
+          "Negative numbers not allowed: -2,-3"
         );
       });
     });

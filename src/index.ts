@@ -12,7 +12,13 @@ const addNumbers = (inputStr: string): number => {
   const escapedDelimeter = delimiter.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const delimiterRegex = new RegExp(`${escapedDelimeter}|\\n`);
   const numberStrs = numbersStr.split(delimiterRegex);
+  const negativeNumberStrs: string[] = [];
   const total = numberStrs.reduce((acc, numStr) => {
+    if (/^-\d+$/.test(numStr)) {
+      negativeNumberStrs.push(numStr);
+      return acc;
+    }
+
     if (/^\d+$/.test(numStr) === false) {
       throw new Error("Invalid input");
     }
@@ -22,6 +28,11 @@ const addNumbers = (inputStr: string): number => {
     }
     return acc + currentNumber;
   }, 0);
+  if (negativeNumberStrs.length > 0) {
+    throw new Error(
+      `Negative numbers not allowed: ${negativeNumberStrs.join(",")}`
+    );
+  }
   return total;
 };
 
