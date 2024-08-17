@@ -72,6 +72,9 @@ describe("addNumbers", () => {
       });
     });
     describe("Invalid inputs", () => {
+      it("should throw error when no custom delimiter is passed", () => {
+        expect(() => addNumbers("//\n1;2")).toThrow("Invalid input");
+      });
       it("should throw error when custom delimiter is not followed by new line", () => {
         expect(() => addNumbers("//;1;2")).toThrow("Invalid input");
       });
