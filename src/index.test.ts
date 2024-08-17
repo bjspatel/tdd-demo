@@ -77,4 +77,14 @@ describe("addNumbers", () => {
       });
     });
   });
+
+  describe("Step-5: Disallow negative numbers", () => {
+    describe("Invalid inputs", () => {
+      it("should throw error when passed number string with negative numbers", () => {
+        expect(() => addNumbers("1,-2,-3")).toThrow(
+          "Negatives not allowed: -2, -3"
+        );
+      });
+    });
+  });
 });
