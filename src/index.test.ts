@@ -26,4 +26,14 @@ describe("addNumbers", () => {
       });
     });
   });
+
+  describe("Step-2: Add any amout of numbers", () => {
+    describe("Valid inputs", () => {
+      it("should give sum of numbers when passed any amount of comma-separated number string", () => {
+        const numbers = Array.from({ length: 100 }, (_, i) => i + 1);
+        const expectedSum = numbers.reduce((acc, num) => acc + num, 0);
+        expect(addNumbers(numbers.join(","))).toBe(expectedSum);
+      });
+    });
+  });
 });
