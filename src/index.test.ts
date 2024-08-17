@@ -49,4 +49,26 @@ describe("addNumbers", () => {
       });
     });
   });
+
+  describe("Step-4: Allow custom delimiter", () => {
+    describe("Valid inputs", () => {
+      it("should give sum of numbers when passed number string with custom delimiter", () => {
+        expect(addNumbers("//;\n1;2")).toBe(3);
+      });
+      it("should give sum of numbers when passed number string with custom delimiter and new line", () => {
+        expect(addNumbers("//;\n1;2\n3")).toBe(6);
+      });
+      it("should give sum of numbers when custom delimiter is a new line", () => {
+        expect(addNumbers("//\n\n1\n2\n3")).toBe(6);
+      });
+      it("should give sum of numbers when custom delimiter is more than one characeters long", () => {
+        expect(addNumbers("//..\n1..2..3")).toBe(6);
+      });
+    });
+    describe("Invalid inputs", () => {
+      it("should throw error when custom delimiter is not followed by new line", () => {
+        expect(() => addNumbers("//;1;2")).toThrow("Invalid input");
+      });
+    });
+  });
 });
