@@ -36,4 +36,17 @@ describe("addNumbers", () => {
       });
     });
   });
+
+  describe("Step-3: Allow new line as delimiter", () => {
+    describe("Valid inputs", () => {
+      it("should give sum of numbers when passed comma-separated number string with new line delimiter", () => {
+        expect(addNumbers("1\n2,3")).toBe(6);
+      });
+    });
+    describe("Invalid inputs", () => {
+      it("should throw error when number string ends with new line", () => {
+        expect(() => addNumbers("1,2\n")).toThrow("Invalid input");
+      });
+    });
+  });
 });
