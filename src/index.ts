@@ -1,5 +1,14 @@
 const addNumbers = (inputStr: string): number => {
-  return -1;
+  if (inputStr === "") return 0;
+  const numberStrs = inputStr.split(",");
+  const total = numberStrs.reduce((acc, numStr) => {
+    const currentNumber = parseInt(numStr, 10);
+    if (isNaN(currentNumber)) {
+      throw new Error("Invalid input");
+    }
+    return acc + currentNumber;
+  }, 0);
+  return total;
 };
 
 export default addNumbers;
